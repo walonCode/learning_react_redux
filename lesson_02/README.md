@@ -266,7 +266,7 @@ export const selectPostByUser = createSelector(
 export default postSlice.reducer;
 ```
 
-### **📡 Redux Slice with AsyncThunk (`usersSlice.js`)**  
+### **📡 Redux Slice  (`usersSlice.js`)**  
 ```js
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
