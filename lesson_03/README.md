@@ -1,12 +1,133 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## **Lesson Three: RTK Query CRUD with JSON Server**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### **📌 Project Overview**  
+This project demonstrates how to use **RTK Query** for performing **CRUD (Create, Read, Update, Delete) operations** while fetching and updating data dynamically. The backend is powered by a **JSON server**, with the database stored in `data/db.json`.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### **🛠️ Tech Stack**  
+- **React** (with Redux Toolkit)  
+- **RTK Query** (for efficient API calls)  
+- **JSON Server** (mock backend)  
+
+---
+
+### **🚀 Features**  
+✅ Fetch data from `db.json` using **RTK Query**  
+✅ Add new records to the database (**Create**)  
+✅ Update existing records (**Update**)  
+✅ Delete records (**Delete**)  
+✅ Automatically update UI when data changes  
+
+---
+
+### **📂 Project Structure**  
+```
+lesson-three/
+│── src/
+│   ├── app/
+│   │   ├── store.js   # Redux store setup  
+│   ├── features/
+│   │   ├── apiSlice.js  # RTK Query API slice   
+│   ├── components 
+│── data/
+│   ├── db.json   # JSON Server database  
+│── package.json  
+│── README.md  
+```
+
+---
+
+### **📥 Installation & Setup**  
+
+1️⃣ **Clone the repository**  
+```sh
+git clone https://github.com/walonCode/learning_react_redux.git
+cd learning_react_redux/lesson_03
+```
+
+2️⃣ **Install dependencies**  
+```sh
+npm install
+```
+
+3️⃣ **Start JSON Server**  
+```sh
+npm run server
+```
+
+4️⃣ **Run the React App**  
+```sh
+npm run dev
+```
+
+---
+
+### **📡 RTK Query API Setup (`apiSlice.js`)**  
+```js
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+export const apiSlice = createApi({
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
+  endpoints: (builder) => ({
+    getTodos: builder.query({
+      query: () => "/todos",
+      providesTags: ["Todos"]
+    }),
+    addTodos: builder.mutation({
+      query: (newPost) => ({
+        url: "/todo",
+        method: "POST",
+        body: newPost
+      }),
+      invalidatesTags: ["Todos"]
+    }),
+    updateTodos: builder.mutation({
+      query: ({ id, ...updatedTodos }) => ({
+        url: `/todos/${id}`,
+        method: "PUT",
+        body: updatedPost
+      }),
+      invalidatesTags: ["Todos"]
+    }),
+    deleteTodos: builder.mutation({
+      query: (id) => ({
+        url: `/todos/${id}`,
+        method: "DELETE"
+      }),
+      invalidatesTags: ["Todos"]
+    })
+  })
+});
+
+export const { useGetTodosQuery, useAddTodosMutation, useUpdateTodosMutation, useDeleteTodosMutation } = apiSlice;
+```
+
+---
+
+### **📝 Sample `db.json` (Mock Database)**  
+```json
+{
+  "todos": [
+    { "id": 1, "title": "Learn RTK Query", "content": "Powerful data fetching!" },
+    { "id": 2, "title": "Setup JSON Server", "content": "Fake backend for testing" }
+  ]
+}
+```
+
+---
+
+### **🔗 Resources & Learning**  
+- 📖 [Redux Toolkit Docs](https://redux-toolkit.js.org/)  
+- 📖 [RTK Query Guide](https://redux-toolkit.js.org/rtk-query/overview)  
+- 📖 [JSON Server](https://github.com/typicode/json-server)  
+
+---
+
+### **💡 Conclusion**  
+This project demonstrates **how to efficiently fetch and manage data** using **RTK Query** while performing **CRUD operations** on a mock backend (`db.json`). 🚀  
+
