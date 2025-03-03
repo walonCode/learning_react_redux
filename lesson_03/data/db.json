@@ -1,0 +1,58 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "userId": 1,
+      "title": "Complete Redux tutorial",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "userId": 1,
+      "title": "Fix UI bugs in project",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "userId": 1,
+      "title": "Write unit tests for API",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "userId": 1,
+      "title": "Refactor authentication logic",
+      "completed": true
+    },
+    {
+      "id": "6",
+      "userId": 1,
+      "title": "Review pull requests",
+      "completed": true
+    },
+    {
+      "id": "7",
+      "userId": 1,
+      "title": "Update project documentation",
+      "completed": false
+    },
+    {
+      "id": "8",
+      "userId": 1,
+      "title": "Plan next sprint tasks",
+      "completed": true
+    },
+    {
+      "id": "0bdf",
+      "userId": 1,
+      "title": "love",
+      "completed": true
+    },
+    {
+      "id": "cff1",
+      "userId": 1,
+      "title": "get food and cash plus pizza",
+      "completed": false
+    }
+  ]
+}

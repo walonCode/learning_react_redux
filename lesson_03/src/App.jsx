@@ -1,6 +1,9 @@
+import TodoList from "./features/todos/TodoList";
 
 export default function App(){
   return (
-    <div className="font-bold text-4xl">Hello</div>
+    <div className="">
+      <TodoList/>
+    </div>
   )
 }
